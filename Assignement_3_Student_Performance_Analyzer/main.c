@@ -1,8 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define MARKS_LEN 3
 #define MAX_NAME_LEN 50
+
+#define GRADE_A_THRESHOLD 85
+#define GRADE_B_THRESHOLD 70
+#define GRADE_C_THRESHOLD 50
+#define GRADE_D_THRESHOLD 35
 
 typedef struct {
     int Roll;
@@ -17,11 +23,11 @@ int calculateTotal(float marks[]);
 float calculateAverage(int total);
 char calculateGrade(float average);
 void printStarPattern(char grade);
-void printRollNumbersRecursively(int n);
+void printRollNumbersRecursively(int currentRollNo);
 
 int main() {
-    int n;
-    scanf("%d", &n);
+    int total_students;
+    scanf("%d", &total_students);
 
     Student *students = (Student *)malloc(n * sizeof(Student));
     if (students == NULL) {
@@ -51,7 +57,7 @@ int main() {
     }
     
     printf("\nList of Roll Numbers (via recursion): ");
-    printRollNumbersRecursively(n);
+    printRollNumbersRecursively(total_students);
     printf("\n");
     free(students);
 
@@ -71,10 +77,10 @@ float calculateAverage(int total) {
 }
 
 char calculateGrade(float average) {
-    if (average >= 85) return 'A';
-    if (average >= 70) return 'B';
-    if (average >= 50) return 'C';
-    if (average >= 35) return 'D';
+    if (average >= GRADE_A_THRESHOLD) return 'A';
+    if (average >= GRADE_B_THRESHOLD) return 'B';
+    if (average >= GRADE_C_THRESHOLD) return 'C';
+    if (average >= GRADE_D_THRESHOLD) return 'D';
     return 'F';
 }
 
@@ -87,10 +93,10 @@ void printStarPattern(char grade) {
     printf("\n");
 }
 
-void printRollNumbersRecursively(int n) {
-    if (n < 1) {
+void printRollNumbersRecursively(int currentRollNo) {
+    if (currentRollNo < 1) {
         return;
     }
-    printRollNumbersRecursively(n - 1);
-    printf("%d ", n);
+    printRollNumbersRecursively(currentRollNo - 1);
+    printf("%d ", currentRollNo);
 }
