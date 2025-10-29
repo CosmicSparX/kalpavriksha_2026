@@ -23,7 +23,7 @@ int main() {
   srand(time(NULL));
   int **matrixData = (int **)malloc(matrixDimension * sizeof(int *));
   if (matrixData == NULL) {
-    printf("Memory allocation failed.\n");
+    printf("Memory allocation failed.");
     return 1;
   }
 
@@ -34,15 +34,15 @@ int main() {
 
   generateRandomMatrix(matrixData, matrixDimension);
 
-  printf("\nOriginal Randomly Generated Matrix:\n");
+  printf("Original Randomly Generated Matrix:\n");
   printMatrix(matrixData, matrixDimension);
 
   rotateMatrix90degClockwise(matrixData, matrixDimension);
-  printf("\nMatrix after 90° Clockwise Rotation:\n");
+  printf("Matrix after 90° Clockwise Rotation:\n");
   printMatrix(matrixData, matrixDimension);
 
   applySmoothingFilter(matrixData, matrixDimension);
-  printf("\nMatrix after Applying 3x3 Smoothing Filter:\n");
+  printf("Matrix after Applying 3x3 Smoothing Filter:\n");
   printMatrix(matrixData, matrixDimension);
 
   for (int i = 0; i < matrixDimension; i++) {
@@ -74,6 +74,7 @@ void printMatrix(int **grid, int dimension) {
     }
     printf("\n");
   }
+  printf("\n");
 }
 
 void rotateMatrix90degClockwise(int **grid, int dimension) {
